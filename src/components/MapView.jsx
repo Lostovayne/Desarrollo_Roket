@@ -32,7 +32,7 @@ export const MapView = () => {
             <Marker position={{ lat: locations.lat, lng: locations.lng }}>
                 <Popup>{locations.name}</Popup>
             </Marker>
-            <MapContent /> {/* Renderizar el componente MapContent dentro de MapContainer */}
+            <MapContent />
         </MapContainer>
     );
 };
