@@ -1,9 +1,7 @@
 import { useState } from "react";
+import { ImageTree, MapView, TreeSelect } from "./components";
 import { UseTreeContext } from "./hooks/useTreeContext";
-import { MapView } from "./components/MapView";
 import { SearchTree } from "./utils/SearchTree";
-import { ImageTree } from "./components/ImageTree";
-import { TreeSelect } from "./components/TreeSelect";
 
 export default function App() {
     const { treeState, setMapLocation } = UseTreeContext();
