@@ -34,7 +34,6 @@ export default function App() {
                             name={imagTree.name || treeState[0].name}
                         />
                     </div>
-
                     <MapView />
                 </main>
             ) : (

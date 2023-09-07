@@ -1,7 +1,8 @@
 import "leaflet/dist/leaflet.css";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
-import { UseTreeContext } from "./../hooks/useTreeContext";
 import { useEffect, useState } from "react";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { UseTreeContext } from "./../hooks/useTreeContext";
+import { MapContent } from "./MapContent";
 
 export const MapView = () => {
     const { MapLocation } = UseTreeContext();
@@ -10,18 +11,6 @@ export const MapView = () => {
     useEffect(() => {
         setLocations(MapLocation);
     }, [MapLocation]);
-
-    const MapContent = () => {
-        const map = useMap();
-
-        useEffect(() => {
-            if (map && locations) {
-                map.flyTo([locations.lat, locations.lng], map.getZoom());
-            }
-        }, [map]);
-
-        return null;
-    };
 
     return (
         <MapContainer center={[locations.lat, locations.lng]} zoom={15} scrollWheelZoom={false}>
@@ -32,7 +21,7 @@ export const MapView = () => {
             <Marker position={{ lat: locations.lat, lng: locations.lng }}>
                 <Popup>{locations.name}</Popup>
             </Marker>
-            <MapContent />
+            <MapContent locations={locations} />
         </MapContainer>
     );
 };
