@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.content-input input,
+.content-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
 .leaflet-container {
     width: 800px;
     height: 500px;

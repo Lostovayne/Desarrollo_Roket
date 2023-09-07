@@ -4,7 +4,9 @@ export const ImageTree = ({ image, name }) => {
         <img
             src={image}
             alt={name}
-            className=" max-md:w-56 max-md:h-56  md:w-96 md:h-96  object-cover rounded-lg transition-all duration-1000 ease-in-out"
+            className=" max-md:h-56 md:h-[18rem]  object-cover rounded-lg transition-all duration-1000 ease-in-out absolute z-5 top-0 right-0  w-full
+            
+            "
         />
     );
 };

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ImageTree, MapView, TreeSelect } from "./components";
+import { ImageTree, InfoLocation, MapView, TreeSelect } from "./components";
 import { UseTreeContext } from "./hooks/useTreeContext";
 import { SearchTree } from "./utils/SearchTree";
 
@@ -24,16 +24,18 @@ export default function App() {
     return (
         <div className="flex items-center justify-center flex-col  md:min-h-screen">
             {treeState.length > 0 ? (
-                <main className="space-y-4  max-md:flex-col justify-center flex  items-center space-x-3 ">
-                    <div className=" flex flex-col gap-5">
+                <div className="relative w-full">
+                    <div className=" absolute z-50 w-[21rem] top-0 right-0 bg-white min-h-screen ">
                         <TreeSelect treeState={treeState} handleImageTree={handleImageTree} />
                         <ImageTree
                             image={imagTree.image || treeState[0].image}
                             name={imagTree.name || treeState[0].name}
                         />
+
+                        <InfoLocation />
                     </div>
                     <MapView />
-                </main>
+                </div>
             ) : (
                 <div>...Loading</div>
             )}
