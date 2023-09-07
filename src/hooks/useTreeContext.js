@@ -3,7 +3,7 @@ import { context } from "./../context/constants";
 import { adapterResponse } from "../adapters/adapterResponse";
 
 export const UseTreeContext = () => {
-    const { treeState, setTreeState } = useContext(context);
+    const { treeState, setTreeState, MapLocation, setMapLocation } = useContext(context);
 
     useEffect(() => {
         const dataAdapter = async () => {
@@ -16,5 +16,7 @@ export const UseTreeContext = () => {
     return {
         treeState,
         setTreeState,
+        MapLocation,
+        setMapLocation,
     };
 };
