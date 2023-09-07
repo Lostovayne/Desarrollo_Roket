@@ -1,5 +1,5 @@
 import "leaflet/dist/leaflet.css";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { UseTreeContext } from "./../hooks/useTreeContext";
 import { useEffect, useState } from "react";
 
@@ -9,10 +9,22 @@ export const MapView = () => {
 
     useEffect(() => {
         setLocations(MapLocation);
-    }, [MapLocation, locations]);
+    }, [MapLocation]);
+
+    const MapContent = () => {
+        const map = useMap();
+
+        useEffect(() => {
+            if (map && locations) {
+                map.flyTo([locations.lat, locations.lng], map.getZoom());
+            }
+        }, [map]);
+
+        return null;
+    };
 
     return (
-        <MapContainer center={[locations.lat, locations.lng]} zoom={2} scrollWheelZoom={false}>
+        <MapContainer center={[locations.lat, locations.lng]} zoom={15} scrollWheelZoom={false}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -20,6 +32,7 @@ export const MapView = () => {
             <Marker position={{ lat: locations.lat, lng: locations.lng }}>
                 <Popup>{locations.name}</Popup>
             </Marker>
+            <MapContent /> {/* Renderizar el componente MapContent dentro de MapContainer */}
         </MapContainer>
     );
 };
